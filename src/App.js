@@ -1,29 +1,13 @@
-import "./styles.css";
-import { useEffect, useState } from 'react';
+import React from "react";
+import SearchBar from "./search-bar/SearchBar";
 
-export default function App() {
-  const [input, setInput] = useState("");
-  const [results, setResults] = useState([]);
-  const fetchData = async() => {
-    await fetch('https://dummyjson.com/products/search?q=')
-    .then(res => {
-      let data = res.json();
-      setResults(data);
-    })
-  }
-  useEffect(() => {
-    fetchData();
-  }, [input]);
-
+function App() {
   return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <input className="search-bar" value={input} onChange={(e) => setInput(e.target.value)}/>
-      <div className="results-container">
-        {results?.map((r) => {
-          <span key={r.id} className="result">{r.name}</span>
-        })}
-      </div>
+    <div>
+      <h1>React Coding Questions</h1>
+      <SearchBar />
     </div>
   );
 }
+
+export default App;
